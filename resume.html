@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bethapudi Divakar — Software & Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --white:#e6eef6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071226 0%, #081827 100%);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    .container{
+      width:100%;
+      max-width:1000px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:28px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:22px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .avatar{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin-bottom:18px;
+    }
+    .avatar .circle{
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#0ea5a7,#7c3aed);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:34px;
+      color:white;
+      box-shadow: 0 6px 18px rgba(12,22,40,0.6);
+    }
+    h1.name{
+      margin:0;
+      text-align:center;
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    p.title{
+      margin:6px 0 18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .contact{
+      margin-top:12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .contact .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--glass-2);
+      color:var(--white);
+      font-weight:600;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .section{
+      margin-top:18px;
+    }
+    .section h3{
+      margin:0 0 10px;
+      font-size:13px;
+      color:var(--muted);
+      letter-spacing:0.6px;
+      text-transform:uppercase;
+    }
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .skill{
+      padding:6px 8px;
+      background:var(--glass);
+      border-radius:8px;
+      font-size:13px;
+      color:var(--white);
+    }
+
+    /* Main column */
+    .main{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:26px;
+      min-height:400px;
+      box-shadow: 0 6px 20px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .headline{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+    }
+    .headline .left{
+      max-width:70%;
+    }
+    .headline h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-0.3px;
+    }
+    .headline p{
+      margin:6px 0 0;
+      color:var(--muted);
+    }
+    .actions{
+      display:flex;
+      gap:8px;
+    }
+    .btn{
+      padding:10px 14px;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:10px;
+      color:var(--white);
+      font-weight:600;
+      font-size:13px;
+      cursor:pointer;
+    }
+
+    /* Experience card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius:10px;
+      padding:16px;
+      margin-top:14px;
+    }
+    .role{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .role h4{
+      margin:0;
+      font-size:15px;
+    }
+    .role .meta{
+      color:var(--muted);
+      font-size:13px;
+    }
+    .desc{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+    .project-list{
+      display:grid;
+      gap:12px;
+      margin-top:8px;
+    }
+    .project-item{
+      padding:10px;
+      border-radius:8px;
+      background:var(--glass-2);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+    .project-item a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .container{grid-template-columns: 1fr; padding:0 8px}
+      .sidebar{order:2}
+      .main{order:1}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <aside class="sidebar" aria-label="Profile sidebar">
+      <div class="avatar">
+        <div class="circle">BD</div>
+      </div>
+      <h1 class="name">Bethapudi Divakar</h1>
+      <p class="title">Software & Web Developer</p>
+
+      <div class="contact">
+        <div class="row"><span class="badge">Open to work</span></div>
+        <div class="row">📍 Hyderabad, India</div>
+        <div class="row">✉️ <a href="mailto:divakar@example.com" style="color:var(--white);text-decoration:none">divakar@example.com</a></div>
+        <div class="row">🔗 <a href="https://divakar-resume.lovable.app/" target="_blank" style="color:var(--white);text-decoration:none">divakar-resume.lovable.app</a></div>
+      </div>
+
+      <div class="section">
+        <h3>Skills</h3>
+        <div class="skills">
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">HTML & CSS</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">REST APIs</span>
+          <span class="skill">SQL</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Languages</h3>
+        <div class="skills">
+          <span class="skill">English</span>
+          <span class="skill">Telugu</span>
+          <span class="skill">Hindi</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Education</h3>
+        <div style="color:var(--muted);font-size:13px">
+          <strong>B.Tech — Computer Science</strong><br/>
+          JNTU, India • 2016 - 2020
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" aria-label="Main content">
+      <div class="headline">
+        <div class="left">
+          <h2>Build beautiful web experiences — and make them fast.</h2>
+          <p>I design and build performant web applications and APIs. I enjoy working across the stack — from
+            pixel-perfect UI to resilient backend systems.</p>
+        </div>
+        <div class="actions">
+          <button class="btn" onclick="window.print()">Print</button>
+          <a class="btn" href="mailto:divakar@example.com">Contact</a>
+        </div>
+      </div>
+
+      <section class="card" aria-labelledby="about">
+        <h3 id="about" style="margin-top:0;color:var(--muted);text-transform:uppercase;font-size:12px">About</h3>
+        <p class="desc">I'm a software developer focused on building accessible, responsive, and maintainable web
+          applications. I have worked on e-commerce, analytics dashboards, and internal tools — shipping clean
+          code and measurable improvements to performance and developer experience.</p>
+      </section>
+
+      <section class="card" aria-labelledby="experience">
+        <h3 id="experience" style="margin-top:0;color:var(--muted);text-transform:uppercase;font-size:12px">Experience</h3>
+
+        <div style="margin-top:8px">
+          <div class="role">
+            <div>
+              <h4>Senior Frontend Engineer — Acme Inc.</h4>
+              <div class="meta">Mar 2023 — Present • Hyderabad</div>
+            </div>
+            <div class="meta">Full-time</div>
+          </div>
+          <p class="desc">Building a component library, improving bundle sizes and accessibility. Led migration from
+            legacy stack to React + Vite, reduced initial page load by 40%.</p>
+        </div>
+
+        <div style="margin-top:12px">
+          <div class="role">
+            <div>
+              <h4>Software Engineer — Pixel Labs</h4>
+              <div class="meta">Jul 2020 — Feb 2023 • Remote</div>
+            </div>
+            <div class="meta">Full-time</div>
+          </div>
+          <p class="desc">Worked on developing APIs with Node.js and PostgreSQL, implemented CI/CD pipelines,
+            and improved test coverage across services.</p>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="projects">
+        <h3 id="projects" style="margin-top:0;color:var(--muted);text-transform:uppercase;font-size:12px">Selected Projects</h3>
+
+        <div class="project-list">
+          <div class="project-item">
+            <div>
+              <div style="font-weight:700">Portfolio CMS</div>
+              <div style="font-size:13px;color:var(--muted)">Headless CMS + static export for fast personal sites</div>
+            </div>
+            <div>
+              <a href="#" target="_blank" rel="noopener">View</a>
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div>
+              <div style="font-weight:700">Realtime Dashboard</div>
+              <div style="font-size:13px;color:var(--muted)">Socket-powered analytics dashboard with live charts</div>
+            </div>
+            <div>
+              <a href="#" target="_blank" rel="noopener">View</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="contactme">
+        <h3 id="contactme" style="margin-top:0;color:var(--muted);text-transform:uppercase;font-size:12px">Contact</h3>
+        <p class="desc">Want to build something together? Email me at
+          <a href="mailto:divakar@example.com" style="color:var(--accent);text-decoration:none">divakar@example.com</a>
+          or connect on <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn</a>.
+        </p>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Bethapudi Divakar — Built with HTML & CSS
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // small nicety
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
